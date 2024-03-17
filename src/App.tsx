@@ -11,7 +11,7 @@ function App() {
   const images = [
     {
       src: "../../public/ejemplo.png",
-      alt: "Text1",
+      alt: "Text1 ",
       style: {},
     },
     {
