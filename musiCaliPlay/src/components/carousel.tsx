@@ -1,40 +1,31 @@
 import Carousel from "react-bootstrap/Carousel";
-// import ejemplo from "../../public/";
 
-function CarouselBootstrap() {
+interface ImageProps {
+  src: string;
+  alt: string;
+  style?: React.CSSProperties;
+}
+
+interface Props {
+  images: ImageProps[];
+}
+
+function CarouselBootstrap(props: Props) {
   return (
     <Carousel fade>
-      <Carousel.Item>
-        <img
-          src="../../public/ejemplo.png"
-          alt={"text"}
-          style={{ width: "100%", maxHeight: "500px" }}
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          src="../../public/ejemplo2.png"
-          alt={"text"}
-          style={{ width: "100%", maxHeight: "500px" }}
-        />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      {/* <Carousel.Item>
-        <ExampleCarouselImage text="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>  */}
+      {props.images.map((image, index) => (
+        <Carousel.Item key={index}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            style={{ width: "100%", maxHeight: "500px", ...image.style }}
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
     </Carousel>
   );
 }
